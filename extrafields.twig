@@ -1,0 +1,28 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <article class="post">
+        <header>
+            <div class="title">
+                <h1><a href="{{ record.link() }}">{{ record.title }}</a></h1>
+                {{ record.teaser }}
+            </div>
+            {{ include('partials/_recordheader.twig', {'record': record}) }}
+        </header>
+
+        {% if record.image %}
+            <a href="{{ image(record.image) }}" class="image featured">
+                <img src="{{ thumbnail(record.image, 800, 400, true) }}" alt="{{record.image.title}}">
+            </a>
+        {% endif %}
+
+        {{ record.body }}
+
+        {# If there are repeaters, we should output them. #}
+        {{ fields(common = false, extended = false, repeaters = true) }}
+
+        {{ include('partials/_recordfooter.twig', { 'record': record, extended: true }) }}
+    </article>
+
+{% endblock main %}
+

@@ -1,0 +1,18 @@
+<!-- Header -->
+<header id="header">
+    <h1><a href="/">{{ app.config.get('general/sitename') }}</a></h1>
+    {# {{ menu(template = 'partials/_sub_menu.twig') }} #}
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">{{ __('general.phrase.search-ellipsis') }}</a>
+                <form id="search" method="get" action="{{ paths.root }}search" enctype="text/plain">
+                    <input type="text" name="search" placeholder="{{ __('general.phrase.search-ellipsis') }}" value="{% if search is defined %}{{ search|escape }}{% endif %}" />
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">{{__('Menu')}}</a>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,49 @@
+{# This file is inserted as the 'footer' of each listed record. #}
+
+<footer>
+    <ul class="actions">
+    {% if list is defined %}
+        <li>
+            <a class="button big" href="{{ record.link }}">{{ __('general.phrase.read-more') }}</a>
+        </li>
+    {% endif %}
+    </ul>
+
+{{ include('partials/_sub_taxonomylinks.twig', { record: record }) }}
+
+{% if extended|default() %}
+    {# include the 'default' links to taxonomies. Check the documentation for ways to modify and customize
+       what is output to the browser: https://docs.bolt.cm/content/taxonomies #}
+    <div style="min-width:100%;">
+    {% set previous = record.previous('id') %}
+    {% set next = record.next('id') %}
+    {% if previous or next %}
+        <ul class="actions pagination">
+            {% if previous %}
+                <li>
+                    <a href="{{ previous.link }}" class="button  previous">{{ previous.title }}</a>
+                </li>
+            {% endif %}
+
+            {% if next %}
+                <li>
+                    <a href="{{ next.link }}" class="button  next">{{ next.title }}</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+
+    {% set relatedrecords = record.related() %}
+    {% if relatedrecords is not empty %}
+        <h3 class="meta">{{ __('general.phrase.related-content') }}</h3>
+        <ul class="actions">
+            {% for related in relatedrecords %}
+                <li>
+                    <a class="button small" href="{{ related.link }}">{{ related.title }}</a>
+                </li>
+            {%  endfor %}
+        </ul>
+    {% endif %}
+    </div>
+{% endif %}
+</footer>

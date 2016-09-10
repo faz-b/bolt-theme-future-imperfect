@@ -1,0 +1,55 @@
+{% set main_width = theme.layout.main_width|default(8) %}
+{% set aside_width = theme.layout.aside_width|default(4) %}
+<!doctype html>
+<html class="no-js" lang="{{ htmllang() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {# make sure we always display a proper title: The record's title if there is one, appended with the
+           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ app.config.get('general/sitename') -}}
+            {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+        </title>
+        <link rel="stylesheet" href="{{ paths.theme }}css/main.css">
+        <!--[if lte IE 9]><link rel="stylesheet" href="{{ paths.theme }}css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="{{ paths.theme }}css/ie8.css" /><![endif]-->
+        {% block headincludes %}
+        {% endblock headincludes %}
+    </head>
+    <body{% if single is defined %} class="single"{% endif %}>
+        {% block body %}
+            <div id="wrapper">
+
+                {{ include('partials/_header.twig') }}
+                {{ include('partials/_menu.twig') }}
+
+                <div id="main">
+                    {{ widgets('main_top') }}
+
+                    {% block main %}
+                    {% endblock main %}
+
+                    {{ widgets('main_bottom') }}
+                </div>
+                {% if single is defined %}
+                    {{ include('partials/_footer.twig') }}
+                {% else %}
+                    {{ include('partials/_aside.twig') }}
+                {% endif %}
+            </div>
+        {% endblock body %}
+
+        {% block bottomincludes %}
+        {% endblock bottomincludes %}
+
+        <!-- Scripts -->
+        <script src="{{ paths.theme }}js/jquery.min.js"></script>
+        <script src="{{ paths.theme }}js/skel.min.js"></script>
+        <script src="{{ paths.theme }}js/util.js"></script>
+        <!--[if lte IE 8]><script src="{{ paths.theme }}js/ie/respond.min.js"></script><![endif]-->
+        <script src="{{ paths.theme }}js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+<!-- Footer -->
+<section id="footer">
+    {{ menu(
+        identifier = 'footer',
+        template = 'partials/_sub_menu.twig',
+        params = {'withsubmenus': false, 'class': 'icons'}
+    ) }}
+
+ <p class="copyright">&copy; {{ app.config.get('general/sitename') }}. Design: <a href="http://html5up.net">HTML5 UP</a>. Bolt port: <a href="https://www.faz-b.com">F/\Z-B</a>.</p>
+
+</section>

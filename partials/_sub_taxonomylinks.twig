@@ -1,0 +1,13 @@
+{% if record.taxonomy is defined %}
+    {% for type, values in record.taxonomy %}
+        <ul class="stats">
+        {% for link, value in values %}
+            <li>
+                <a href="{{ link }}">{{ value }}</a>
+            </li>
+        {% else %}
+            <li>{{ __('general.phrase.none') }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+{% endif %}
