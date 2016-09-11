@@ -13,6 +13,7 @@
                 {{ app.config.get('general/sitename') -}}
             {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
         </title>
+        <!--[if lte IE 8]><script src="{{ paths.theme }}components/html5shiv/dist/html5shiv.min.js"></script><![endif]-->
         <link rel="stylesheet" href="{{ paths.theme }}css/main.css">
         <!--[if lte IE 9]><link rel="stylesheet" href="{{ paths.theme }}css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ paths.theme }}css/ie8.css" /><![endif]-->
@@ -46,10 +47,10 @@
         {% endblock bottomincludes %}
 
         <!-- Scripts -->
-        <script src="{{ paths.theme }}js/jquery.min.js"></script>
-        <script src="{{ paths.theme }}js/skel.min.js"></script>
+        <script src="{{ paths.theme }}components/jquery/dist/jquery.min.js"></script>
+        <script src="{{ paths.theme }}components/skel/dist/skel.min.js"></script>
         <script src="{{ paths.theme }}js/util.js"></script>
-        <!--[if lte IE 8]><script src="{{ paths.theme }}js/ie/respond.min.js"></script><![endif]-->
+        <!--[if lte IE 8]><script src="{{ paths.theme }}components/respond/dest/respond.min.js"></script><![endif]-->
         <script src="{{ paths.theme }}js/main.js"></script>
     </body>
 </html>
