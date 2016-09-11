@@ -82,7 +82,12 @@
 
         {% for ct in app.config.get('contenttypes') if not ct.viewless|default(false) %}
 
-            {% setcontent records = ct.slug ~ "/latest/4" %}
+            {% set args = {} %}
+            {% if ct.slug == 'pages' %}
+                {% set args = {id: '!1'}|merge(args) %}
+            {% endif %}
+
+            {% setcontent records = ct.slug ~ "/latest/4"  where args %}
 
             {% if ct.slug == 'pages' %}
                 <section>
