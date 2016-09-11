@@ -4,7 +4,7 @@
     <!-- Intro -->
     {% if app.config.get('general/sitename') %}
         <section id="intro">
-            <a href="#" class="logo"><img src="{{ paths.theme }}images/logo.jpg" alt="" /></a>
+            <a href="#" class="logo"><img src="{{ paths.theme }}images/logo.jpg" alt="logo" /></a>
             <header>
                 <h2>{{ app.config.get('general/sitename') }}</h2>
                 {% if app.config.get('general/payoff') %}
@@ -34,7 +34,7 @@
             <h2>{{ block.title }}</h2>
             {{ block.content }}
 
-            <span class="image fit"><img src="{{ thumbnail(block.image) }}" alt="" /></span>
+            <span class="image fit"><img src="{{ thumbnail(block.image) }}" alt="{{block.values.image.title|default()}}" /></span>
 
             {% if link(block.contentlink) or block.editlink() %}
                 <ul class="actions">
