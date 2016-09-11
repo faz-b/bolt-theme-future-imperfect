@@ -2,6 +2,6 @@
     <time class="published" datetime="{{record.datepublish|localedatetime(theme.time_datetime_format)|trim}}">{{record.datepublish|localedatetime(theme.datetime_format)}}</time>
     <a href="#" class="author"><span class="name">{{record.user.displayname}}</span><img src="{{ paths.theme }}images/avatar.jpg" alt="avatar" /></a>
     {% if record.editlink() %}
-        <a class="button fit small" href="{{ record.editlink() }}">{{ __('Edit') }}</a>
+        <a class="button fit small" href="{{ record.editlink() }}">{{ __('general.phrase.edit') }}</a>
     {% endif %}
 </div>
