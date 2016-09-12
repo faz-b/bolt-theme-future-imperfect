@@ -101,7 +101,7 @@
                             <header>
                                 <h3><a href="{{record.link}}">{{record.title}}</a></h3>
                                 <time class="published" datetime="{{record.datepublish|localedatetime(theme.time_datetime_format)|trim}}">{{record.datepublish|localedatetime(theme.datetime_format)}}</time>
-                                <a href="#" class="author" title="{{record.user.displayname}}"><img src="{{paths.theme}}images/avatar.jpg" alt="avatar" /></a>
+                                {{ include('partials/_author.twig', {'record': record}) }}
                             </header>
                             {% if record.image|length %}
                                 <a href="{{record.Link}}" class="image">
