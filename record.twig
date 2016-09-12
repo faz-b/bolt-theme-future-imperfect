@@ -11,7 +11,7 @@
             {{ include('partials/_recordheader.twig', {'record': record})}}
         </header>
 
-        {% if record.image!="" %}
+        {% if record.image|length %}
             <a href="{{ image(record.image) }}" class="image featured">
                 <img src="{{ thumbnail(record.image, 800, 400, true) }}" alt="{{record.values.image.title|default()}}">
             </a>

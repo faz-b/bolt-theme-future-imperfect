@@ -34,7 +34,9 @@
             <h2>{{ block.title }}</h2>
             {{ block.content }}
 
-            <span class="image fit"><img src="{{ thumbnail(block.image) }}" alt="{{block.values.image.title|default()}}" /></span>
+            {% if block.image|length %}
+                <span class="image fit"><img src="{{ thumbnail(block.image) }}" alt="{{block.values.image.title|default()}}" /></span>
+            {% endif %}
 
             {% if link(block.contentlink) or block.editlink() %}
                 <ul class="actions">
@@ -101,7 +103,7 @@
                                 <time class="published" datetime="{{record.datepublish|localedatetime(theme.time_datetime_format)|trim}}">{{record.datepublish|localedatetime(theme.datetime_format)}}</time>
                                 <a href="#" class="author" title="{{record.user.displayname}}"><img src="{{paths.theme}}images/avatar.jpg" alt="avatar" /></a>
                             </header>
-                            {% if record.image!="" %}
+                            {% if record.image|length %}
                                 <a href="{{record.Link}}" class="image">
                                     <img src="{{ thumbnail(record.image)}}" alt="{{record.values.image.title|default()}}" />
                                 </a>
@@ -123,7 +125,7 @@
                                         {{record.datepublish|localedatetime(theme.datetime_format)}}
                                     </time>
                                 </header>
-                                {% if record.image!="" %}
+                                {% if record.image|length %}
                                     <a href="{{record.Link}}" class="image">
                                         <img src="{{ thumbnail(record.image, 80, 80,true)}}" alt="{{record.values.image.title|default()}}" />
                                     </a>
